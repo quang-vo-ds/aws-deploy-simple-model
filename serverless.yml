@@ -1,16 +1,19 @@
-service: aws_deploy_simple_model
+service: huggingface-on-lambda
 
 provider:
   name: aws
-  region: us-west-2
-  memorySize: 1024 
-  timeout: 30 
+  region: eu-west-1 
 
 functions:
   huggingface:
-    # paste the <image-uri>@<image-digest>
     image: 194847020626.dkr.ecr.us-west-2.amazonaws.com/aws_deploy_simple_model@sha256:7aa178cd5ea65c9c8f8d18611902b73c2d308f767d1644b218ac10c3d8dabf8a
+    # 2 minutes before we throw a timeout
+    timeout: 120
+    # have 1 hot lambda available
+    provisionedConcurrency: 0
+    # our model is less than 1GB, so 1024MB is enough
+    memorySize: 1024 
     events:
       - http:
-          path: prediction # http path
-          method: post # http method
+          path: prediction
+          method: post

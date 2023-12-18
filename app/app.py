@@ -1,7 +1,7 @@
 import json
 from transformers import pipeline
 
-model_id = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+model_id = "lxyuan/distilbert-base-multilingual-cased-sentiments-student"
 classifier = pipeline("sentiment-analysis", model=model_id)
 
 def handler(event, context):
