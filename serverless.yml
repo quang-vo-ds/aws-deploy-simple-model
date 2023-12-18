@@ -1,0 +1,16 @@
+service: aws_deploy_simple_model
+
+provider:
+  name: aws
+  region: us-west-2
+  memorySize: 1024 
+  timeout: 30 
+
+functions:
+  huggingface:
+    # paste the <image-uri>@<image-digest>
+    image: 194847020626.dkr.ecr.us-west-2.amazonaws.com/aws_deploy_simple_model@sha256:7aa178cd5ea65c9c8f8d18611902b73c2d308f767d1644b218ac10c3d8dabf8a
+    events:
+      - http:
+          path: prediction # http path
+          method: post # http method
