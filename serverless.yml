@@ -1,12 +1,12 @@
-service: huggingface-on-lambda
+service: aws-deploy-simple-model
 
 provider:
   name: aws
-  region: eu-west-1 
+  region: us-west-2
 
 functions:
   huggingface:
-    image: 194847020626.dkr.ecr.us-west-2.amazonaws.com/aws_deploy_simple_model@sha256:7aa178cd5ea65c9c8f8d18611902b73c2d308f767d1644b218ac10c3d8dabf8a
+    image: 194847020626.dkr.ecr.us-west-2.amazonaws.com/aws-deploy-simple-model@sha256:7524bf535e67b7944c6d24db804ed79c031c1cc5fd3defd7d3411a178e1d1b56
     # 2 minutes before we throw a timeout
     timeout: 120
     # have 1 hot lambda available

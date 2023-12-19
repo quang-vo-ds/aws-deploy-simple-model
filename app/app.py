@@ -13,12 +13,7 @@ def handler(event, context):
     print(f"prediction: {prediction}")
     return {
         'statusCode': 200,
-        'body': json.dumps(prediction)
+        'headers': {"Content-Type":"application/json"},
+        'body': json.dumps(prediction),
+        'isBase64Encoded': False
     }
-
-if __name__ == "__main__":
-    # import torch
-    # import transformers
-    # print(torch.__version__)
-    # print(transformers.__version__)
-    print(classifier("The restaurant is really bad!"))
